@@ -12,6 +12,8 @@ class Plans extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    public $timestamps = false;
+
     protected $fillable = ['nombre', 'limite_residentes', 'residentes_ilimitados', 'limite_vigilantes', 
     'vigilantes_ilimitados', 'precio_mensual'];
 
