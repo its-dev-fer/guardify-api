@@ -12,5 +12,7 @@ class Access_Logs extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    public $timestamps = false;
+
     protected $fillable = ['tenant_id', 'user_id', 'tipo_acceso', 'detalles'];
 }
