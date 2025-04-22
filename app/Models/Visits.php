@@ -14,7 +14,7 @@ class Visits extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['tenant_id', 'residente_id', 'nombre_visitante', 'fecha_hora'];
+    protected $fillable = ['id','tenant_id', 'residente_id', 'nombre_visitante', 'fecha_hora'];
 
     protected $casts = [
         'fecha_hora' => 'datetime'

@@ -14,7 +14,7 @@ class Plans extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['nombre', 'limite_residentes', 'residentes_ilimitados', 'limite_vigilantes', 
+    protected $fillable = ['id','nombre', 'limite_residentes', 'residentes_ilimitados', 'limite_vigilantes', 
     'vigilantes_ilimitados', 'precio_mensual'];
 
     protected $casts = [
