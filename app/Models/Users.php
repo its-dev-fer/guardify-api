@@ -14,5 +14,5 @@ class Users extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['tenant_id', 'nombre', 'email', 'rol', 'password_hash'];
+    protected $fillable = ['id','tenant_id', 'nombre', 'email', 'rol', 'password_hash'];
 }

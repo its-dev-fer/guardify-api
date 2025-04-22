@@ -14,5 +14,5 @@ class Access_Logs extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['tenant_id', 'user_id', 'tipo_acceso', 'detalles'];
+    protected $fillable = ['id','tenant_id', 'user_id', 'tipo_acceso', 'detalles'];
 }

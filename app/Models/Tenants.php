@@ -14,7 +14,7 @@ class Tenants extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['nombre_residencial', 'plan_id', 'stripe_customer_id', 'activo', 'fecha_inicio', 'fecha_fin'];
+    protected $fillable = ['id','nombre_residencial', 'plan_id', 'stripe_customer_id', 'activo', 'fecha_inicio', 'fecha_fin'];
 
     protected $table = 'tenants';
 
