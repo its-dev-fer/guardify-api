@@ -18,5 +18,3 @@ use App\Http\Controllers\TenantController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/Tenants/register', [TenantController::class, 'registerTenant']);
