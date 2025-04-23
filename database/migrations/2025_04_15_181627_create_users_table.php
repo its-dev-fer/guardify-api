@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('tenant_id')->nullable();
             $table->foreign('tenant_id')->references('id')->on('tenants');
             $table->string('nombre');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('rol')->default('admin');
             $table->string('password_hash');
         });
