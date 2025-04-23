@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TenantController;
@@ -19,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/Tenants/register', [TenantController::class, 'registerTenant']);
+Route::post('/tenants/register', [TenantController::class, 'registerTenant']);
+
+Route::post('/users/register', [UserController::class, 'register']);
