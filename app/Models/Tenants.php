@@ -12,7 +12,9 @@ class Tenants extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['nombre_residencial', 'plan_id', 'stripe_customer_id', 'activo', 'fecha_inicio', 'fecha_fin'];
+    public $timestamps = false;
+
+    protected $fillable = ['id','nombre_residencial', 'plan_id', 'stripe_customer_id', 'activo', 'fecha_inicio', 'fecha_fin'];
 
     protected $table = 'tenants';
 

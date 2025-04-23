@@ -12,7 +12,9 @@ class Visits extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['tenant_id', 'residente_id', 'nombre_visitante', 'fecha_hora'];
+    public $timestamps = false;
+
+    protected $fillable = ['id','tenant_id', 'residente_id', 'nombre_visitante', 'fecha_hora'];
 
     protected $casts = [
         'fecha_hora' => 'datetime'

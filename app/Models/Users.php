@@ -12,5 +12,7 @@ class Users extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['tenant_id', 'nombre', 'email', 'rol', 'password_hash'];
+    public $timestamps = false;
+
+    protected $fillable = ['id','tenant_id', 'nombre', 'email', 'rol', 'password_hash'];
 }

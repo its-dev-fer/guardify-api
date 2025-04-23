@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('plan_id')->references('id')->on('plans');
             $table->string('stripe_customer_id')->nullable();
             $table->boolean('activo')->default(true);
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin')->nullable();
         });
     }
 
