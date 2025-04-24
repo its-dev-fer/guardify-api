@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/tenants/register', [TenantController::class, 'registerTenant']);
 
-Route::post('/users/register', [UserController::class, 'register']);
+Route::post('/users/register-admin', [UserController::class, 'RegisterResidentialAdmin']);

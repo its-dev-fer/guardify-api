@@ -11,58 +11,39 @@ use Throwable;
 use UserValidator;
 
 class UserServices {
-    public static function register(Request $request){
+    public static function RegisterResidentialAdmin(Request $request){
         try {
-            $request->validate([
-                'email' => 'required|email'
+            $validated = $request->validate([
+                'nombre' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8',
+                'tenant_id' => 'required|uuid'
             ]);
-            $nombre = SanitizeString::run($request->input('nombre'));
-            $email = SanitizeString::run($request->input('email'));
-            $password = $request->input('password');
-            $rol = $request->input('rol', null);
-
-            if ($nombre === "" || $email === "" || empty($password)) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Nombre, email y contraseña son requeridos y deben ser válidos.'
-                ], 400);
-            }
+            $nombre = SanitizeString::run($validated['nombre']);
+            $email = SanitizeString::run($validated['email']);
+            $password = $validated['password'];
+            $tenant_id = $validated['tenant_id'];
+            $ROL = 'admin';
 
             $newUserAttr = [
                 'id' => Str::uuid(),
-                'tenant_id' => null,
+                'tenant_id' => $tenant_id,
                 'nombre' => $nombre,
                 'email' => $email,
-                'password_hash' => Hash::make($password)
+                'password_hash' => Hash::make($password),
+                'rol' => $ROL
             ];
-
-            if ($rol) {
-                if(UserValidator::validateRol($rol)){
-                    $newUserAttr['rol'] = $rol;
-                } else {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'No tienes permisos para asignarte este rol.'
-                    ], 403);
-                }
-            }
 
             Users::create($newUserAttr);
 
             return response()->json([
-                'success' => true,
                 'message' => 'Usuario registrado con éxito.'
             ], 201);
         } catch (Throwable $error) {
             $error_message = $error->getMessage();
             return response()->json([
-                'success' => false,
                 'message' => "Error: $error_message"
             ], 500);
         }
-    }
-
-    public static function registerInTenant(Request $request){
-        
     }
 }

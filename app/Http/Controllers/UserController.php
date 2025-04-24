@@ -8,7 +8,7 @@ use App\Services\UserServices;
 
 class UserController extends Controller
 {
-    public function register(Request $request){
-        return UserServices::register($request);
+    public function RegisterResidentialAdmin(Request $request){
+        return UserServices::RegisterResidentialAdmin($request);
     }
 }
