@@ -22,8 +22,9 @@ class TenantServices {
                 ],422);
             }
             $ACTIVO = false;
+            $nombre_residencial_formateado = Str::title($nombre_residencial_sanitizado);
 
-            $storedSameTenant = Tenants::where('nombre_residencial', $nombre_residencial)->first();
+            $storedSameTenant = Tenants::where('nombre_residencial', $nombre_residencial_formateado)->first();
 
             if($storedSameTenant){
                 return response()->json([
@@ -34,7 +35,7 @@ class TenantServices {
 
             $tenant = Tenants::create([
                 'id' => Str::uuid(),
-                'nombre_residencial' => Str::title($nombre_residencial_sanitizado),
+                'nombre_residencial' => $nombre_residencial_formateado,
                 'plan_id' => null,
                 'stripe_customer_id' => null,
                 'activo' => $ACTIVO,
