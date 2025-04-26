@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\SanitizeString;
@@ -16,13 +17,12 @@ class UserServices {
             $validated = $request->validate([
                 'nombre' => 'required|string',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
-                'tenant_id' => 'required|uuid'
+                'password' => 'required|min:8'
             ]);
+            $tenant_id = $request->cookie('tenant_id');
             $nombre = SanitizeString::run($validated['nombre']);
             $email = SanitizeString::run($validated['email']);
             $password = $validated['password'];
-            $tenant_id = $validated['tenant_id'];
             $ROL = 'admin';
 
             $newUserAttr = [
@@ -38,7 +38,7 @@ class UserServices {
 
             return response()->json([
                 'message' => 'Usuario registrado con éxito.'
-            ], 201);
+            ], 201)->cookie(Cookie::forget('tenant_id'));
         } catch (Throwable $error) {
             $error_message = $error->getMessage();
             return response()->json([
