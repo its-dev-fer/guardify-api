@@ -44,7 +44,7 @@ class TenantServices {
             ]);
             return response()->json([
                 'message' => 'nuevo tenant creado con exito.'
-            ], 201);
+            ], 201)->cookie('tenant_id', $tenant->id, 30, null, null, true, true);
         }catch(Throwable $error){
             $error_message = $error->getMessage();
             return response()->json([
