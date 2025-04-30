@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\AccessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/tenants/register', [TenantController::class, 'registerTenant']);
 
 Route::post('/users/register-admin', [UserController::class, 'RegisterResidentialAdmin']);
+
+Route::get('/users/admin/register-access', [AccessController::class, 'RegisterAdminAuth']);
