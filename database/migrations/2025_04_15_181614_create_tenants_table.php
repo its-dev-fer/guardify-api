@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('stripe_subscription_id')->nullable();
             $table->string('nombre_residencial');
             $table->uuid('plan_id')->nullable();
             $table->foreign('plan_id')->references('id')->on('plans');

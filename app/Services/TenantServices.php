@@ -35,6 +35,7 @@ class TenantServices {
 
             $tenant = Tenants::create([
                 'id' => Str::uuid(),
+                'stripe_subscription_id' => null,
                 'nombre_residencial' => $nombre_residencial_formateado,
                 'plan_id' => null,
                 'stripe_customer_id' => null,
